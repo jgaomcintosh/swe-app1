@@ -2,6 +2,8 @@ language: python
 # command to install dependencies
 install:
   - pip install -r requirements.txt
+  - pip install flake8
+  - pip install black
 # command to run tests
 deploy:
   provider: elasticbeanstalk
