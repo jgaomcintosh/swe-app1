@@ -14,4 +14,5 @@ deploy:
   env: "django-env"
   bucket_name: "the-target-S3-bucket"
 script:
-  - pytest
+  - pytest --flake8
+  - pytest --black
