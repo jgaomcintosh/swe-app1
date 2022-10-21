@@ -21,9 +21,6 @@ deploy:
   env: "django-env"
   bucket_name: "the-target-S3-bucket"
 
-before_script:
-  - python manage.py migrate
-
 script:
   - black .
   - python -m black . --check
