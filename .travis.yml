@@ -22,8 +22,7 @@ deploy:
   bucket_name: "the-target-S3-bucket"
 
 script:
-  - black .
-  - python -m black . --check
+  - python -m black . --check --line-length=99
   - flake8 .
   # - python -m coverage run --source=. manage.py test
   # - python -m coverage report -m
