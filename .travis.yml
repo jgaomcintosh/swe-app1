@@ -21,11 +21,15 @@ deploy:
   env: "django-env"
   bucket_name: "the-target-S3-bucket"
 
+before_script:
+  - python manage.py migrate
+  - python manage.py collectstatic --noinput
+
 script:
   - python -m black . --check --line-length=99
   - flake8 .
-  # - python -m coverage run --source=. manage.py test
-  # - python -m coverage report -m
+  - coverage run --source=django-tutorial,polls manage.py test
+  - python -m coverage report -m
 
 after_script:
   - coveralls
