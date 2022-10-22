@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
@@ -27,6 +27,7 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
+
     def get_queryset(self):
         """
         Excludes any questions that aren't published yet.
@@ -37,6 +38,7 @@ class DetailView(generic.DetailView):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
+
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
