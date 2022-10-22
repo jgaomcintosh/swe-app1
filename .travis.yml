@@ -13,7 +13,7 @@ install:
 script:
   - python -m black . --check --line-length=99
   - flake8 .
-  - coverage run --source=swe-app1,polls manage.py test
+  - coverage run --source=ebdjango,polls manage.py test
   - python -m coverage report -m
 
 after_script:
