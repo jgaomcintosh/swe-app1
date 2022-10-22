@@ -29,7 +29,7 @@ deploy:
 script:
   - python -m black . --check --line-length=99
   - flake8 .
-  - coverage run --source=django-tutorial,polls manage.py test
+  - coverage run --source=django-tutorial,polls swe-app1/manage.py test
   - python -m coverage report -m
 
 after_script:
