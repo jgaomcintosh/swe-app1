@@ -21,10 +21,10 @@ deploy:
   env: "django-env"
   bucket_name: "the-target-S3-bucket"
 
-before_script:
-  - python manage.py makemigrations
-  - python manage.py migrate
-  - python manage.py collectstatic --noinput
+# before_script:
+  # - python manage.py makemigrations
+  # - python manage.py migrate
+  # - python manage.py collectstatic --noinput
 
 script:
   - python -m black . --check --line-length=99
