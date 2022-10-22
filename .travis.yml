@@ -10,7 +10,21 @@ install:
   - pip install coverage
   - pip install coveralls
 
-deploy:
+# before_script:
+  # - python manage.py makemigrations
+  # - python manage.py migrate
+  # - python manage.py collectstatic --noinput
+
+script:
+  - python -m black . --check --line-length=99
+  - flake8 .
+  - coverage run --source=swe-app1,polls manage.py test
+  - python -m coverage report -m
+
+after_script:
+  - coveralls
+
+  deploy:
   provider: elasticbeanstalk
   access_key_id:
     secure: "AKIA3TEAFEHHZFBYTDEH"
@@ -20,20 +34,6 @@ deploy:
   app: "django-tutorial"
   env: "django-env"
   bucket_name: "the-target-S3-bucket"
-
-# before_script:
-  # - python manage.py makemigrations
-  # - python manage.py migrate
-  # - python manage.py collectstatic --noinput
-
-script:
-  - python -m black . --check --line-length=99
-  - flake8 .
-  - coverage run --source=polls manage.py test
-  - python -m coverage report -m
-
-after_script:
-  - coveralls
 
 
   
