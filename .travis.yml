@@ -10,11 +10,6 @@ install:
   - pip install coverage
   - pip install coveralls
 
-# before_script:
-  # - python manage.py makemigrations
-  # - python manage.py migrate
-  # - python manage.py collectstatic --noinput
-
 script:
   - python -m black . --check --line-length=99
   - flake8 .
